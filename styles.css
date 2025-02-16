@@ -1,3 +1,7 @@
+:root {
+    --num: 16;
+}
+
 #container {
     display: flex;
     flex-flow: row wrap;
@@ -7,6 +11,6 @@
 .cell {
     box-sizing: border-box;
     border: solid 1px black;
-    width: calc(100% / 16);
+    width: calc(100% / var(--num));
     aspect-ratio: 1 / 1;
 }

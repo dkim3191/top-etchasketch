@@ -19,10 +19,14 @@ cell.forEach((c) => {
 // https://www.theodinproject.com/lessons/foundations-etch-a-sketch#assignment
 // STEP 4
 //
-// const button = document.querySelector("button");
-// button.addEventListener("click", (e) => {
-//     let input;
-//     do {
-//         input = +prompt("Input the new size (max size 100)");
-//     } while (input < 0 || input > 100);
-// });
+const button = document.querySelector("button");
+const r = document.querySelector(":root");
+button.addEventListener("click", (e) => {
+    let input;
+    do {
+        input = +prompt("Input the new size (max size 100)");
+    } while (input < 0 || input > 100);
+    r.style.setProperty("--num", input);
+
+    // TODO - maybe re-render the grid? not sure, need to preview it first to see if it works.
+});
