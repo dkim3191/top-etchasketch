@@ -1,0 +1,12 @@
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 20px;
+}
+
+.cell {
+    box-sizing: border-box;
+    border: solid 1px black;
+    width: calc(100% / 16);
+    aspect-ratio: 1 / 1;
+}
