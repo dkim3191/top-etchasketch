@@ -1,32 +1,39 @@
 const container = document.querySelector("#container");
-
-for (let i = 0; i < (16 * 16); i++) {
-    const div = document.createElement("div");
-    div.classList.toggle("cell");
-    div.setAttribute("id", `div${i + 1}`);
-    container.appendChild(div);
-}
-
-const cell = document.querySelectorAll(".cell");
-
-cell.forEach((c) => {
-    c.addEventListener("mouseover", (e) => {
-        c.setAttribute("style", "background-color: black;");
-    });
-});
-
-// TODO - implement button 
-// https://www.theodinproject.com/lessons/foundations-etch-a-sketch#assignment
-// STEP 4
-//
 const button = document.querySelector("button");
 const r = document.querySelector(":root");
+
+function createGrid(size) {
+    for (let i = 0; i < (size * size); i++) {
+        const div = document.createElement("div");
+        div.classList.add("cell");
+        div.setAttribute("id", `div${i + 1}`);
+        container.appendChild(div);
+    }
+    addCellEventListeners();
+}
+
+function removeGrid() {
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach(cell => cell.remove());
+}
+
+function addCellEventListeners() {
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach(cell => {
+        cell.addEventListener("mouseover", () => {
+            cell.setAttribute("style", "background-color: black;");
+        });
+    });
+}
+
 button.addEventListener("click", (e) => {
     let input;
     do {
         input = +prompt("Input the new size (max size 100)");
     } while (input < 0 || input > 100);
     r.style.setProperty("--num", input);
-
-    // TODO - maybe re-render the grid? not sure, need to preview it first to see if it works.
+    removeGrid();
+    createGrid(input);
 });
+
+createGrid(16);
